@@ -11,21 +11,28 @@ The document should include the following sections:
 
 ## Features to include:
 - Sudoku puzzle generation with varying difficulty levels (easy, medium, hard).
-- Timer and scoring system to track user performance.
+    - The backend should generate puzzles on-the-fly using a reliable algorithm that ensures the puzzles are solvable and have a unique solution.
+- Timer track user performance.
 - Highlighting of conflicting numbers to assist users in identifying mistakes.
 - "Scratch" mode that allows users to make notes in the cells for potential numbers.
 - Optional hints and solution reveal features for users who need assistance.
 - User authentication and profile management.
     - Authentication should be implemented using social login options with Google, GitHub, and Facebook login all supported.
     - Profile information should include username, email, and an optional profile picture.
-- A leaderboard to display top players based on their scores and completion times.
+    - Profile pictures should be stored in Azure blob storage with references to the images stored in the database.
+    - Logging in should be *optional* for playing the game, but users must be logged in to access the leaderboard and save their game history.
+- Authenticated users should be able to view their game history, including past puzzles played, completion times, and performance statistics.
+- A leaderboard to display top players based on their completion times.
     - Hints and solution reveal features will disqualify users from the leaderboard.
+    - There should be separate leaderboards for each difficulty.
+    - There should also be separate leaderboards for daily, weekly, and all-time top players.
+- It is *not* a requirement to support game state persistence across sessions. Users should not be able to save and resume games, and all game data can be stored in-memory for the duration of a session.
 
 ## User Interface:
 - The application should have a clean and intuitive interface that is easy to navigate.
 - The `frontend-design` skill must be used to create a visually appealing design that enhances the user experience.
 - The Sudoku grid should be prominently displayed, with clear indicators for selected cells and any conflicts.
-- The timer and scoring system should be easily visible to the user.
+- The timer should be easily visible to the user.
 - The application should be responsive and work well on both desktop and mobile devices.
 - The user profile and leaderboard should be accessible from the main menu.
 - The plan should specify a color scheme and design elements that align with the theme of the application, ensuring a cohesive and engaging user experience.
@@ -34,12 +41,12 @@ The document should include the following sections:
 - The backend should be developed using ASP.NET Core, and the frontend should be built with Vue.js.
     - All standard best practices for both frameworks should be followed, including proper separation of concerns, use of components, and adherence to RESTful API design principles.
 - The solution should use an Aspire host for deployment. Use the `aspire` skill to manage Aspire-related work.
-- The application should use a relational database (e.g., SQL Server, PostgreSQL) to store user data, game states, and leaderboard information.
+- The application should use a PostgreSQL database to store user data, game history, and leaderboard information.
     - The application should use an ORM (e.g., Entity Framework Core) for database interactions.
 
 ## Test Requirements:
 - The plan should include a comprehensive testing strategy that covers unit testing, integration testing, and end-to-end testing.
-    - The plan should include specific areas to focus on for testing, such as the puzzle generation algorithm, user authentication, and the scoring system.
+    - The plan should include specific areas to focus on for testing, such as the puzzle generation algorithm, user authentication, and the timing system.
     - Unit tests should be written for both the backend and frontend components to ensure that individual functions and components work as expected.
     - Integration tests should be implemented to verify that different parts of the application work together correctly.
     - End-to-end tests should be conducted to simulate user interactions and ensure that the application functions correctly from the user's perspective.
