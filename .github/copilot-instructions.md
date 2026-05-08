@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a **Sudoku web application** built with an **ASP.NET Core** backend and a **Vue.js** frontend, deployed via **.NET Aspire**. The PRD and planning documents live in `plans/`, and the prompt templates for generating them live in `prompts/`.
+This is a **Sudoku web application** built with an **ASP.NET Core** backend and a **Vue.js** frontend, deployed via **.NET Aspire**. The PRD and planning documents live in `plans/`, and the prompt templates for generating them live in `prompts/`. You should ignore the `prompts/` directory for implementation purposes — those files are for reference only and are not intended to be re-run. You should also ignore the `README.md` file, which contains an overview of the project and its current state, but is not intended to be a source of requirements or implementation guidance.
 
 ## Architecture
 
@@ -22,6 +22,9 @@ This is a **Sudoku web application** built with an **ASP.NET Core** backend and 
 - `tests/Sudoku.Api.Tests/` — Backend unit and integration tests
 - `tests/Sudoku.Web.Tests/` — Frontend unit tests (Vitest)
 - `tests/Sudoku.E2E.Tests/` — Playwright end-to-end tests
+- `plans/` — Product Requirements Document (PRD) and related planning artifacts
+- `prompts/` — Prompt templates used to generate the PRD and other planning documents (**Ignore this folder. Not for use in planning or implementation**)
+- `README.md` — Project overview and current state (**Ignore this file. Not for use in planning or implementation**)
 
 ## Key Design Decisions
 
