@@ -18,9 +18,7 @@ var api = builder.AddProject<Projects.Sudoku_Api>("api")
 var web = builder.AddViteApp("web", "../Sudoku.Web")
     .WithNpm()
     .WithReference(api)
-    .WithEnvironment("VITE_API_BASE_URL", api.GetEndpoint("https"))
+    .WithEnvironment("SUDOKU_API_PROXY_TARGET", api.GetEndpoint("https"))
     .WaitFor(api);
-
-api.WithEnvironment("Cors__AllowedOrigins__0", web.GetEndpoint("http"));
 
 builder.Build().Run();

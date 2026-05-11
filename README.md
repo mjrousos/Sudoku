@@ -36,7 +36,7 @@ Run the distributed app:
 aspire run --project src\Sudoku.AppHost\Sudoku.AppHost.csproj --non-interactive
 ```
 
-The AppHost starts PostgreSQL, Azurite, the API, and the Vite frontend. Active games are intentionally in-memory; server restarts or idle eviction can lose an active puzzle, and the UI treats that as a normal "start a new puzzle" path.
+The AppHost starts PostgreSQL, Azurite, the API, and the Vite frontend. During Aspire local development, Vite proxies same-origin `/api` requests to the API so cookie auth and anti-forgery tokens work without browser CORS friction. Active games are intentionally in-memory; server restarts or idle eviction can lose an active puzzle, and the UI treats that as a normal "start a new puzzle" path.
 
 ## Tests and validation
 
@@ -58,7 +58,7 @@ Production configuration must provide:
 - `Authentication__Google__ClientId` and `Authentication__Google__ClientSecret`.
 - `Authentication__GitHub__ClientId` and `Authentication__GitHub__ClientSecret`.
 - `Authentication__Facebook__ClientId` and `Authentication__Facebook__ClientSecret`.
-- `Cors__AllowedOrigins__0` when serving the SPA and API from different origins.
+- `VITE_API_BASE_URL` and `Cors__AllowedOrigins__0` when serving the SPA and API from different origins instead of same-origin hosting/proxying.
 
 OAuth credentials and storage connection strings are secrets and must not be committed. Cookie and anti-forgery cookies use secure production defaults and HSTS is enabled outside development.
 

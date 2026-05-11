@@ -63,8 +63,13 @@ function cellIndex(row: number, column: number): number {
 }
 
 function cellClasses(index: number): Record<string, boolean> {
+  const row = Math.floor(index / 9)
+  const column = index % 9
+
   return {
     cell: true,
+    'cell-box-left': column === 3 || column === 6,
+    'cell-box-top': row === 3 || row === 6,
     'cell-selected': props.selectedIndex === index,
     'cell-given': props.isGiven(index),
     'cell-peer': props.isPeer(index),
@@ -108,45 +113,40 @@ function onKeydown(event: KeyboardEvent): void {
 
 <style scoped>
 .sudoku-grid {
+  --gridline: color-mix(in srgb, var(--color-ink) 34%, var(--color-paper));
+  --gridline-strong: var(--color-ink);
+  --segment-line-width: clamp(3px, 0.72cqw, 5px);
+
   aspect-ratio: 1;
-  background: var(--color-ink);
-  border: 3px solid var(--color-ink);
+  background: var(--gridline-strong);
+  border: var(--segment-line-width) solid var(--gridline-strong);
   box-shadow: 0 28px 80px var(--shadow-board);
+  container-type: inline-size;
   display: grid;
-  gap: 3px;
+  gap: 0;
+  grid-template-rows: repeat(9, minmax(0, 1fr));
   max-width: min(82vw, 620px);
   min-width: min(92vw, 320px);
-  padding: 3px;
+  overflow: hidden;
   position: relative;
-}
-
-.sudoku-grid::after {
-  background:
-    linear-gradient(90deg, transparent calc(33.333% - 1px), var(--color-ink) calc(33.333% - 1px), var(--color-ink) calc(33.333% + 2px), transparent calc(33.333% + 2px)),
-    linear-gradient(90deg, transparent calc(66.666% - 2px), var(--color-ink) calc(66.666% - 2px), var(--color-ink) calc(66.666% + 1px), transparent calc(66.666% + 1px)),
-    linear-gradient(0deg, transparent calc(33.333% - 1px), var(--color-ink) calc(33.333% - 1px), var(--color-ink) calc(33.333% + 2px), transparent calc(33.333% + 2px)),
-    linear-gradient(0deg, transparent calc(66.666% - 2px), var(--color-ink) calc(66.666% - 2px), var(--color-ink) calc(66.666% + 1px), transparent calc(66.666% + 1px));
-  content: "";
-  inset: 3px;
-  pointer-events: none;
-  position: absolute;
 }
 
 .sudoku-row {
   display: grid;
-  gap: 3px;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  min-height: 0;
 }
 
 .cell {
   align-items: center;
   background: var(--color-paper);
   border: 0;
+  border-bottom: 1px solid var(--gridline);
+  border-right: 1px solid var(--gridline);
   color: var(--color-text);
   cursor: pointer;
   display: grid;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 4vw, 2.35rem);
   font-weight: 700;
   justify-items: center;
   line-height: 1;
@@ -154,6 +154,31 @@ function onKeydown(event: KeyboardEvent): void {
   padding: 0;
   position: relative;
   transition: background-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.cell-value {
+  display: block;
+  font-size: clamp(1rem, 5.35cqw, 2.05rem);
+  line-height: 0.9;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.sudoku-row:last-child .cell {
+  border-bottom: 0;
+}
+
+.cell:nth-child(9) {
+  border-right: 0;
+}
+
+.cell-box-left {
+  border-left: var(--segment-line-width) solid var(--gridline-strong);
+}
+
+.cell-box-top {
+  border-top: var(--segment-line-width) solid var(--gridline-strong);
 }
 
 .cell:hover:not(:disabled) {
@@ -197,7 +222,7 @@ function onKeydown(event: KeyboardEvent): void {
   color: var(--color-muted);
   display: grid;
   font-family: var(--font-body);
-  font-size: clamp(0.48rem, 1.5vw, 0.78rem);
+  font-size: clamp(0.42rem, 1.7cqw, 0.68rem);
   font-weight: 800;
   gap: 1px;
   grid-template-columns: repeat(3, 1fr);

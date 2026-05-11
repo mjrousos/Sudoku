@@ -76,4 +76,5 @@ This repo has custom Copilot skills in `.github/skills/`:
 - **Unit tests**: Both backend (C#) and frontend (TypeScript/Vitest), targeting ≥80% code coverage.
 - **Integration tests**: Verify cross-component interactions (API + DB, auth flows).
 - **End-to-end tests**: Playwright-based browser tests covering user workflows.
+- **Visible UI changes**: When fixing an issue that results in visible UI changes, always inspect the running app with browser automation after the code change. Use Aspire to run/discover the app when applicable, then use Playwright to exercise the affected scenario and confirm the visual result, preferably with a screenshot artifact.
 - Focus areas: puzzle generation algorithm correctness, authentication flows, timer accuracy.
