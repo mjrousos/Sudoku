@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Sudoku.Api/Sudoku.Api.csproj" />
+    <Project Path="src/Sudoku.AppHost/Sudoku.AppHost.csproj" />
+    <Project Path="src/Sudoku.ServiceDefaults/Sudoku.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Sudoku.Api.Tests/Sudoku.Api.Tests.csproj" />
+  </Folder>
+</Solution>

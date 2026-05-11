@@ -1,0 +1,12 @@
+{
+  "name": "sudoku-e2e-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "typescript": "~6.0.2"
+  }
+}

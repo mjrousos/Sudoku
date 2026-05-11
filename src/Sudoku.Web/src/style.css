@@ -1,0 +1,92 @@
+:root {
+  color-scheme: light;
+  font-family: var(--font-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --font-body: "Aptos", "Segoe UI", sans-serif;
+  --font-display: "Georgia", "Iowan Old Style", "Times New Roman", serif;
+  --color-background: #eee6d6;
+  --color-paper: #fbf3df;
+  --color-surface: #fff9ec;
+  --color-text: #221b15;
+  --color-ink: #19130f;
+  --color-player: #9f351b;
+  --color-muted: #77695d;
+  --color-border: #d5c5a8;
+  --color-accent: #c64a24;
+  --color-focus: #1f6feb;
+  --color-selected: #f6d28d;
+  --color-peer: #f7e6bd;
+  --color-same: #ffd8a8;
+  --color-danger: #a62222;
+  --color-danger-soft: #ffe1db;
+  --color-success: #28683a;
+  --color-success-soft: #dff3dc;
+  --shadow-board: rgb(63 36 16 / 0.28);
+  --shadow-soft: rgb(63 36 16 / 0.13);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #16110d;
+  --color-paper: #251b15;
+  --color-surface: #1d1712;
+  --color-text: #f5ead6;
+  --color-ink: #f6dfb9;
+  --color-player: #ff9b62;
+  --color-muted: #b9a48b;
+  --color-border: #4c3b2d;
+  --color-accent: #ff7847;
+  --color-focus: #78a8ff;
+  --color-selected: #57361c;
+  --color-peer: #31251c;
+  --color-same: #5e3b20;
+  --color-danger: #ff8d7c;
+  --color-danger-soft: #421c18;
+  --color-success: #9be18c;
+  --color-success-soft: #1b3a20;
+  --shadow-board: rgb(0 0 0 / 0.5);
+  --shadow-soft: rgb(0 0 0 / 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 34rem),
+    linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--color-border) 22%, transparent) 48% 52%, transparent 52%),
+    var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-main {
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.page {
+  margin-inline: auto;
+  max-width: 960px;
+}
+
+.page h1 {
+  margin-top: 0;
+}

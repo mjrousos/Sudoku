@@ -1,0 +1,15 @@
+{
+  "name": "sudoku",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "src/Sudoku.Web",
+    "tests/Sudoku.Web.Tests",
+    "tests/Sudoku.E2E.Tests"
+  ],
+  "scripts": {
+    "build:web": "npm run build --workspace @sudoku/web",
+    "test:web": "npm run test --workspace sudoku-web-tests",
+    "test:e2e": "npm run test --workspace sudoku-e2e-tests"
+  }
+}

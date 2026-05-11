@@ -1,0 +1,11 @@
+{
+  "extends": "../../src/Sudoku.Web/tsconfig.app.json",
+  "compilerOptions": {
+    "types": ["vitest/globals", "jsdom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../../src/Sudoku.Web/src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.vue", "../../src/Sudoku.Web/src/**/*.ts", "../../src/Sudoku.Web/src/**/*.vue"]
+}
